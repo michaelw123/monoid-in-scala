@@ -13,13 +13,14 @@ package object monoids {
   implicit val intAdditionMonoid = MonoidInstance[Int](0, _ + _)
   implicit val intMultiplicationMonoid =  MonoidInstance[Int](1, _ * _)
 
-  implicit val optionMonoid = new Monoid[Option[Int]] {
-        def zero:Option[Int] = None
-        def op(a1:Option[Int], a2:Option[Int]) = (a1, a2) match {
+  implicit def optionMonoid[A](implicit m:Monoid[A]): Monoid[Option[A]] =
+    new Monoid[Option[A]] {
+        def zero:Option[A] = None
+        def op(a1:Option[A], a2:Option[A]):Option[A] = (a1, a2) match {
           case (None, None) => None
           case (Some(_), None) => a1
           case (None, Some(_)) => a2
-          //case (Some(x), Some(y)) => a1 zip a2
+          case (Some(x), Some(y)) => Some(m.op(x, y))
         }
   }
 
@@ -33,24 +34,14 @@ package object monoids {
               m2.getOrElse(key, default = vm.zero)
             ))
         }
-
       override final val zero: Map[K, V] = Map.empty
     }
-  //    implicit val optionMonoid = new Monoid[Option[Int]] {
-  //      def zero:Option[Int] = None
-  //      def op(a1:Option[Int], a2:Option[Int]) = (a1, a2) match {
-  //        case (None, None) => None
-  //        case (Some(_), None) => a1
-  //        case (None, Some(_)) => a2
-  //        //case (Some(x), Some(y)) => a1 zip a2
-  //      }
-  //    }
-  //    trait Monoid2[F[_], A] {
-  //      def zero:F[A]
-  //      def op(a1:F[A], a2:F[A]):F[A]
-  //    }
-  //    trait SetMonoid[A] extends Monoid2[Set[A], A]{
-  //      def zero = Set.empty[A]
-  //      def op(a1:Set[A], a2:Set[A]):Set[A] = a1 ++ a2
-  //    }
+//      trait Monoid2[F[_], A] {
+//        def zero:F[A]
+//        def op(a1:F[A], a2:F[A]):F[A]
+//      }
+//      trait SetMonoid[A] extends Monoid2[Set[A], A]{
+//        def zero = Set.empty[A]
+//        def op(a1:Set[A], a2:Set[A]):Set[A] = a1 ++ a2
+//      }
 }
