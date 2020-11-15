@@ -40,8 +40,6 @@ package object monoids {
 //        def zero:F[A]
 //        def op(a1:F[A], a2:F[A]):F[A]
 //      }
-//      trait SetMonoid[A] extends Monoid2[Set[A], A]{
-//        def zero = Set.empty[A]
-//        def op(a1:Set[A], a2:Set[A]):Set[A] = a1 ++ a2
-//      }
+  implicit def setMonoid[A] = MonoidInstance[Set[A]](Set.empty[A], _ ++ _)
+
 }
