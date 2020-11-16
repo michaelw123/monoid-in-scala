@@ -11,5 +11,10 @@ object intComposition extends App {
   def multiplication(list:List[Int]) = {
     list.foldLeft(intMultiplicationMonoid.zero)(intMultiplicationMonoid.op(_, _))
   }
+
   println(multiplication(intList))
+
+  def max(list:List[Int]):Int = {
+
+  }
 }

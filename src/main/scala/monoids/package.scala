@@ -1,7 +1,6 @@
 package object monoids {
   trait Monoid[A] {
     def zero: A
-
     def op(a1: A, a2: A): A
   }
 
@@ -12,6 +11,16 @@ package object monoids {
 
   implicit val intAdditionMonoid = MonoidInstance[Int](0, _ + _)
   implicit val intMultiplicationMonoid =  MonoidInstance[Int](1, _ * _)
+  implicit val stringConcatMonoid =  MonoidInstance[String]("", _ + _)
+  implicit val orMonoid = MonoidInstance[Boolean](false, _ || _)
+  implicit val andMonoid = MonoidInstance[Boolean](true, _ && _)
+  implicit def setMonoid[A] = MonoidInstance[Set[A]](Set.empty[A], _ ++ _)
+  implicit def listMonoid[A] = MonoidInstance[List[A]](Nil, _ ++ _)
+  implicit def functionMonoid[A,B](B: Monoid[B]): Monoid[A => B] = new Monoid[A => B] {
+    def op(f: A => B, g: A => B) = a => B.op(f(a), g(a))
+    val zero: A => B = a => B.zero
+  }
+
 
   implicit def optionMonoid[A](implicit m:Monoid[A]): Monoid[Option[A]] =
     new Monoid[Option[A]] {
@@ -24,7 +33,7 @@ package object monoids {
         }
   }
 
-  implicit def mapMonoid[K, V](implicit vm: Monoid[V]): Monoid[Map[K, V]] =
+  implicit def mapMonoid[K, V](implicit vm: Monoid[V]): Monoid[Map[K, V]] = {
     new Monoid[Map[K, V]] {
       override final def op(m1: Map[K, V], m2: Map[K, V]): Map[K, V] =
         (m1.keySet | m2.keySet).foldLeft(this.zero) {
@@ -34,12 +43,15 @@ package object monoids {
               m2.getOrElse(key, default = vm.zero)
             ))
         }
+
       override final val zero: Map[K, V] = Map.empty
     }
-//      trait Monoid2[F[_], A] {
+  }
+  //implicit def numericMaxMonoid[A <: Numeric]
+
+  //      trait Monoid2[F[_], A] {
 //        def zero:F[A]
 //        def op(a1:F[A], a2:F[A]):F[A]
 //      }
-  implicit def setMonoid[A] = MonoidInstance[Set[A]](Set.empty[A], _ ++ _)
 
 }
