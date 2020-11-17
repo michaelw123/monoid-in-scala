@@ -7,14 +7,8 @@ object intComposition extends App {
   }
   val intList=List(1,2,3,4,5)
   println(addition(intList))
-
-  def multiplication(list:List[Int]) = {
-    list.foldLeft(intMultiplicationMonoid.zero)(intMultiplicationMonoid.op(_, _))
-  }
-
-  println(multiplication(intList))
-
-  def max(list:List[Int]):Int = {
-
-  }
+  
+//  def max(list:List[Int]):Int = {
+//
+//  }
 }

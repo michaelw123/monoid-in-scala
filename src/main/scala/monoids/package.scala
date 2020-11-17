@@ -10,7 +10,6 @@ package object monoids {
   }
 
   implicit val intAdditionMonoid = MonoidInstance[Int](0, _ + _)
-  implicit val intMultiplicationMonoid =  MonoidInstance[Int](1, _ * _)
   implicit val stringConcatMonoid =  MonoidInstance[String]("", _ + _)
   implicit val orMonoid = MonoidInstance[Boolean](false, _ || _)
   implicit val andMonoid = MonoidInstance[Boolean](true, _ && _)

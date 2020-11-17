@@ -11,12 +11,14 @@ object optionComposition extends App {
       println(x)
   }
 
-  def testProduct = {
-    implicit val m = optionMonoid[Int](intMultiplicationMonoid)
-    val x = compose(Option(1), Option(2), None, Option(4))
-    println(x)
-  }
+//  def testProduct = {
+//    implicit val m = optionMonoid[Int](intMultiplicationMonoid)
+//    val x = compose(Option(1), Option(2), None, Option(4))
+//    println(x)
+//  }
+//  testAdd
+//  testProduct
+
   testAdd
-  testProduct
 
 }
