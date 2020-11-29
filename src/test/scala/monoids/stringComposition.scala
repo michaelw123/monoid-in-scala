@@ -1,6 +1,4 @@
-package momoids
-import monoids._
-
+package monoids
 
 object stringComposition extends App{
   def contact(strings:List[String]) =

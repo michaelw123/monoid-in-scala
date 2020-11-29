@@ -1,6 +1,5 @@
-package momoids
+package monoids
 
-import monoids._
 object intComposition extends App {
   def addition(list:List[Int]) = {
     list.foldLeft(intAdditionMonoid.zero)(intAdditionMonoid.op(_, _))

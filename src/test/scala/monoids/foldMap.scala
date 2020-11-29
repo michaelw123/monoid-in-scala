@@ -1,5 +1,4 @@
-package momoids
-import monoids._
+package monoids
 
 object foldMap extends App {
   def foldMap[A, B](s:Seq[A], f: A => B)(implicit m:Monoid[B]):B = {

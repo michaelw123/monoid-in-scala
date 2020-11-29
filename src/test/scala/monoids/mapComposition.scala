@@ -1,6 +1,5 @@
-package momoids
+package monoids
 
-import monoids._
 object mapComposition extends App {
   def merge[String, Int](maps:Map[String, Int] *)(implicit monoid: Monoid[Map[String, Int]]):Map[String, Int] = {
     maps.foldLeft(monoid.zero)(monoid.op(_, _))

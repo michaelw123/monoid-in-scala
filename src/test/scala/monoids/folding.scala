@@ -1,5 +1,4 @@
-package momoids
-import monoids._
+package monoids
 
 object folding extends App {
   trait Fold[I, O] {

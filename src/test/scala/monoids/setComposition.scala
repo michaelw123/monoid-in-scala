@@ -1,5 +1,4 @@
-package momoids
-import monoids._
+package monoids
 
 object setComposition extends App {
   def merge[String] (sets:Set[String] *):Set[String] = {

@@ -1,6 +1,5 @@
-package momoids
+package monoids
 
-import monoids._
 object optionComposition extends App {
   def compose[Int](options:Option[Int] *)(implicit monoid:Monoid[Option[Int]])=
     options.foldLeft(monoid.zero)(monoid.op(_, _))
