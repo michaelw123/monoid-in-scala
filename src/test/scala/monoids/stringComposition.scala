@@ -1,10 +1,11 @@
 package monoids
 
 object stringComposition extends App{
-  def contact(strings:List[String]) =
-    strings.foldLeft(stringConcatMonoid.zero)(stringConcatMonoid.op(_, _))
+  def contact(strings:Seq[String])(implicit m:Monoid[String]) =
+    strings.foldLeft(m.zero)(m.op(_, _))
 
-  val x = contact(List("a", "b", "c"))
+  import monoidInstance.stringConcatMonoid
+  val x = contact(Seq("a", "b", "c"))
 
   println(x)
 }

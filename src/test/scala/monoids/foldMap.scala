@@ -18,14 +18,14 @@ object foldMap extends App {
   }
   def complicatedcomputation(x:Int) = x.toString
 
-  val x = foldMap(List(1,2,3,4,5), complicatedcomputation)
-
-  println(x)
-  def length(s:String) = s.length
-  val l = foldMap(List("a", "bb", "ccc"), length)
-
-  println(l)
-
-  val l1 = mapFold(List("a", "bb", "ccc"), length)
-  println(l1)
+//  val x = foldMap(List(1,2,3,4,5), complicatedcomputation)
+//
+//  println(x)
+//  def length(s:String) = s.length
+//  val l = foldMap(List("a", "bb", "ccc"), length)
+//
+//  println(l)
+//
+//  val l1 = mapFold(List("a", "bb", "ccc"), length)
+//  println(l1)
 }

@@ -12,9 +12,9 @@ object parallel extends App {
     }
   }
 
-  val x = parallel(List(1,2,3,4,5,6).par)
-  println(x)
-  val y =  parallel(List("1", "2", "3", "4","5","6").par)
-  println(y)
+//  val x = parallel(List(1,2,3,4,5,6).par)
+//  println(x)
+//  val y =  parallel(List("1", "2", "3", "4","5","6").par)
+//  println(y)
 
 }
