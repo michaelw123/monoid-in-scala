@@ -1,23 +1,12 @@
 package monoids
 
 object optionComposition extends App {
-  def compose[Int](options:Option[Int] *)(implicit monoid:Monoid[Option[Int]])=
-    options.foldLeft(monoid.zero)(monoid.op(_, _))
+  def compose[A](options:Option[A] *) (implicit m:Monoid[Option[A]]) =
+    options.foldLeft(m.zero)(m.op(_, _))
+  import monoidInstance.{optionMonoid, intAdditionMonoid, stringConcatMonoid}
 
-//  def testAdd = {
-//      implicit val m = optionMonoid[Int](intAdditionMonoid)
-//      val x = compose(Option(1), Option(2), None, Option(4))
-//      println(x)
-//  }
+  println(compose(Some(1), None, Some(2)))
 
-//  def testProduct = {
-//    implicit val m = optionMonoid[Int](intMultiplicationMonoid)
-//    val x = compose(Option(1), Option(2), None, Option(4))
-//    println(x)
-//  }
-//  testAdd
-//  testProduct
-
- // testAdd
+  println(compose(Some("a"), None, Some("b")))
 
 }

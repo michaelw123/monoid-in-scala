@@ -1,6 +1,6 @@
 package monoids
 
-object booleanOrComposition extends App {
+object booleanComposition extends App {
   def booleanComposition(bools:Seq[Boolean])(implicit m:Monoid[Boolean]) =
     bools.foldLeft(m.zero)(m.op(_, _))
 
