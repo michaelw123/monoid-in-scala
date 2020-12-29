@@ -17,6 +17,7 @@ package object monoidInstance {
     def op(f: A => B, g: A => B) = a => B.op(f(a), g(a))
     val zero: A => B = a => B.zero
   }
+
   //implicit def maxMonoid = MonoidInstance[Int](Int.MinValue, math.max(_, _))
   //implicit def minMonoid = MonoidInstance[Int](Int.MaxValue, math.min(_, _))
 
@@ -32,7 +33,6 @@ package object monoidInstance {
       }
     }
 
-  
 
   //      trait Monoid2[F[_], A] {
   //        def zero:F[A]
