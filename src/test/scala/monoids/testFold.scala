@@ -2,7 +2,7 @@ package monoids
 import monoids.Foldable._
 
 
-object fold extends App {
+object testFold extends App {
 
   def testFoldableInt = {
     import monoidInstance.intAdditionMonoid
@@ -18,6 +18,8 @@ object fold extends App {
       Map("1" -> 1, "2" -> 2, "3" -> 3),
       Map("1" -> 100, "2" -> 2, "4" -> 4))))
   }
+
+  
   testFoldableInt
   testFoldableString
   testFoldableMap
