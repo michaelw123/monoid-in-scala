@@ -2,7 +2,7 @@ package monoids
 import monoids.Foldable._
 
 
-object testFold extends App {
+object testFoldable extends App {
 
   def testFoldableInt = {
     import monoidInstance.intAdditionMonoid
@@ -18,11 +18,17 @@ object testFold extends App {
       Map("1" -> 1, "2" -> 2, "3" -> 3),
       Map("1" -> 100, "2" -> 2, "4" -> 4))))
   }
+  def testFoldMap = {
+    import monoidInstance.intAdditionMonoid
+    val a = Foldable[List].foldMap(List("aaa", "bbb", "ccc"))(_.length)
+    println(a)
+  }
 
-  
   testFoldableInt
   testFoldableString
   testFoldableMap
+
+  testFoldMap
 
 
 }
