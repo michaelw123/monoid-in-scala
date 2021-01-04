@@ -7,14 +7,10 @@ trait Foldable[F[_]]  {
 object Foldable {
   def apply[F[_]](implicit instance: Foldable[F]): Foldable[F] = instance
   implicit val listFoldable:Foldable[List] = new Foldable[List] {
-      override def fold[A](fa: List[A])(implicit m: Monoid[A]): A = {
+      override def fold[A](fa: List[A])(implicit m: Monoid[A]): A =
         fa.foldLeft(m.zero)(m.op)
-      }
-      override def foldMap[A, B](s: List[A])(f: A => B)(implicit m: Monoid[B]): B  = {
-      fold(s.map(f))(m)
-    }
-
-
+      override def foldMap[A, B](s: List[A])(f: A => B)(implicit m: Monoid[B]): B  =
+        fold(s.map(f))(m)
   }
 
 }
