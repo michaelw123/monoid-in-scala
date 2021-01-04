@@ -1,3 +1,3 @@
 # monoid-in-scala
 
-Demostration the power of monoids is Scala
+Demostrate the power of monoids is Scala
