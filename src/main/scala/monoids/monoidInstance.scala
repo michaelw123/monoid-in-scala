@@ -18,10 +18,6 @@ package object monoidInstance {
     val zero: A => B = a => B.zero
   }
 
-  //implicit def maxMonoid = MonoidInstance[Int](Int.MinValue, math.max(_, _))
-  //implicit def minMonoid = MonoidInstance[Int](Int.MaxValue, math.min(_, _))
-
-
   implicit def optionMonoid[A](implicit m:Monoid[A]): Monoid[Option[A]] =
     new Monoid[Option[A]] {
       def zero:Option[A] = None
@@ -32,11 +28,4 @@ package object monoidInstance {
         case (Some(x), Some(y)) => Some(m.op(x, y))
       }
     }
-
-
-  //      trait Monoid2[F[_], A] {
-  //        def zero:F[A]
-  //        def op(a1:F[A], a2:F[A]):F[A]
-  //      }
-
 }

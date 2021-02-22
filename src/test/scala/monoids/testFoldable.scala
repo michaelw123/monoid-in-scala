@@ -10,7 +10,7 @@ object testFoldable extends App {
   }
   def testFoldableString = {
     import monoidInstance.stringConcatMonoid
-    println(Foldable[List].fold(List("a", "b", "c")))
+    println(Foldable[List].fold(List("how", "are", "you")))
   }
   def testFoldableMap = {
     import monoidInstance.mapMonoid
